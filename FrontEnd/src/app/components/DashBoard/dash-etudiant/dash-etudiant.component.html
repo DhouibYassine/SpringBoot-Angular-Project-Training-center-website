@@ -1,0 +1,395 @@
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+  
+  <!---------------------------------------------------------------------------------------->
+                        <!-- Sidebar -->    
+                        <app-sidebar></app-sidebar>
+                        <!-- End of Sidebar -->
+  <!---------------------------------------------------------------------------------------->
+  
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+  
+            <!-- Main Content -->
+            <div id="content">
+  
+  <!---------------------------------------------------------------------------------------->
+                        <!-- Topbar --> 
+                        <app-top-bar></app-top-bar>
+                        <!-- End of Topbar -->
+  <!---------------------------------------------------------------------------------------->
+  
+  <div class="card shadow mb-4">
+  
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Etudiant</h4>
+    </div>
+    
+    <div class="card-body">
+        <div class="table-responsive">
+        
+              <!-- Button trigger modal -->      
+              <mat-form-field style="display: flex; height: 10vh;">
+                <mat-label>Search</mat-label>
+                <input  matInput (keyup)="applyFilter($event)" #input>
+                </mat-form-field>
+                
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <h1 class="h3 mb-0 text-gray-800"></h1>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+                    <mat-icon class="btn-icon">person_add</mat-icon>
+                    <span class="btn-text"> Add Etudiant </span>
+                    
+                  </button>
+                  
+              </div>    
+     
+              
+  <!-- -----------------------------------------------------Modal New---------------------------------------------------------------- -->
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">NEw</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+          <form  [formGroup]="myNewForm" (ngSubmit)="newOnSubmit()">
+
+            
+            <div class="row">
+              <div class="col-md-6 form-group mt-3 mt-md-0" >
+                <input type="text" class="form-control" id="newnom" placeholder="prénom" formControlName="newnom" required>
+               </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+               <input type="text" class="form-control" id="newprenom" placeholder="prénom" formControlName="newprenom" required>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="number" class="form-control" id="newcin" placeholder="Num Cin" formControlName="newcin" required>
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <select class="form-select" id="newsexe" placeholder="sexe"  formControlName="newsexe">
+                  <option value="" disabled selected>Sexe</option>
+                  <option value="homme">Homme</option>
+                  <option value="femme">Femme</option>
+                </select>
+              </div>
+            </div>
+
+     
+            <div class="row">
+
+              <div class="col-md-6 form-group">
+                <input type="email" class="form-control" id="newemail" placeholder="E-mail" formControlName="newemail" required>
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="number" class="form-control" id="newnumTel" placeholder="Num Tel" formControlName="newnumTel" required>
+              </div>
+
+            </div>
+
+
+            <label>date de naissance</label>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="date" class="form-control" id="newdateDeNaissance"   formControlName="newdateDeNaissance">
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="text" class="form-control" id="newlieuDeNaissance" placeholder="Lieu" formControlName="newlieuDeNaissance" required>
+              </div>
+            </div>    
+
+
+            
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="newadresse"  formControlName="newadresse" required>
+              <label for="newadresse">Adresse</label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <select class="form-select" id="newcivilite" formControlName="newcivilite">
+                  <option value="" disabled selected>civilite</option>
+                  <option value="Tunisienne">Tunisienne</option>
+                  <option value="française">française</option>
+                  <option value="autre">Autre</option>
+
+                </select>
+              </div>
+            
+       <div class="col-md-6 form-group mt-3 mt-md-0">
+        <select class="form-select" id="NewniveauEtudeEtudiant" formControlName="NewniveauEtudeEtudiant">
+          <option value="" disabled selected>You are</option>
+          <option value="Etudiant">Etudiant</option>
+          <option value="Enseignant">Enseignant</option>
+        </select>
+        </div>
+
+          </div>  
+          <div class="row">
+
+            <div class="col-md-6 form-group">
+              <input type="password" class="form-control" id="newpassword" placeholder="password" formControlName="newpassword" required>                 
+            </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+                  <label class="custom-file-label" for="photoEtudiant">Upload you photo</label>
+                  <span>{{ selectedFileName }}</span>
+
+                </div>
+              </div>
+
+
+              
+
+          </div>     
+            <button type="submit" class="btn btn-primary  w-100 mt-3" >Submit</button>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+     
+  <!-- -----------------------------------------------------Modal Update--------------------------------------------------------------->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Update</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="col-md-6 form-group">               
+                 <input type="text" class="form-control" id="nom" placeholder="Nom" formControlName="nom" required>
+            </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+               <input type="text" class="form-control" id="prenom" placeholder="prénom" formControlName="prenom" required>
+            </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="number" class="form-control" id="cin" placeholder="Num Cin" formControlName="cin" required>
+              </div>
+
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+                <select class="form-select" id="sexe" placeholder="sexe"  formControlName="sexe">
+                  <option value="" disabled selected>Sexe</option>
+                  <option value="homme">Homme</option>
+                  <option value="femme">Femme</option>
+                </select>
+              </div>
+            </div>
+
+     
+            <div class="row">
+
+              <div class="col-md-6 form-group">
+                <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email" required>
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="number" class="form-control" id="numTel" placeholder="Num Tel" formControlName="numTel" required>
+              </div>
+
+            </div>
+
+
+            <label>date de naissance</label>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="date" class="form-control" id="dateDeNaissance"   formControlName="dateDeNaissance">
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="text" class="form-control" id="lieuDeNaissance" placeholder="Lieu" formControlName="lieuDeNaissance" required>
+              </div>
+            </div>    
+
+
+            
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="adresse"  formControlName="adresse" required>
+              <label for="adresse">Adresse</label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <select class="form-select" id="civilite" formControlName="civilite">
+                  <option value="" disabled selected>civilite</option>
+                  <option value="Tunisienne">Tunisienne</option>
+                  <option value="française">française</option>
+                  <option value="autre">Autre</option>
+
+                </select>
+              </div>
+            
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <select class="form-select" id="niveauEtude" formControlName="niveauEtude">
+                  <option value="" disabled selected>You are</option>
+                  <option value="Etudiant">Etudiant</option>
+                  <option value="Enseignant">Enseignant</option>
+                </select>
+                </div>
+        
+        </div>     
+          <div class="row">
+
+            <!-- <div class="col-md-6 form-group">
+              <input type="password" class="form-control" id="password" placeholder="password" formControlName="password" required>                 
+            </div> -->
+
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+                  <label class="custom-file-label" for="photoEtudiant">Upload you photo</label>
+                  <span>{{ selectedFileName }}</span>
+
+                </div>
+              
+
+
+              
+
+            </div>     
+            <button type="submit" class="btn btn-primary  w-100 mt-3" >Submit</button>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <!-- ----------------------------------------------------------------------------------------------------------------------------->
+
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" mat-table [dataSource]="dataSource">
+  
+                  
+                  <!-- <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.id}}</td>
+                  </ng-container> -->
+                  <ng-container matColumnDef="photo">
+                    <th mat-header-cell *matHeaderCellDef> photo </th>
+                    <td mat-cell *matCellDef="let etudiant">
+                                        
+                      <div *ngIf="etudiant.sexe =='homme'">
+                      <a href=""><img *ngIf="etudiant.photo !=null " src="assets/UploadImages/{{etudiant.photo}}"  width="60" style="border-radius: 70%;"></a> 
+                      <a href=""><img *ngIf="etudiant.photo ==null" src="assets/User/boy.jpg"  width="60" style="border-radius: 50%;"></a> 
+                      </div>
+  
+                      <div *ngIf="etudiant.sexe =='femme'">
+                        <a href=""><img *ngIf="etudiant.photo !=null" src="assets/UploadImages/{{etudiant.photo}}"  width="60" style="border-radius: 50%;"></a> 
+                          <a href=""><img *ngIf="etudiant.photo ==null" src="assets/User/girl.jpg"  width="60" style="border-radius: 50%;"></a> 
+                      </div>
+     
+                  </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="Nom">
+                    <th mat-header-cell *matHeaderCellDef> Nom </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.nom}} </td>
+                  </ng-container>
+              
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="Prenom">
+                    <th mat-header-cell *matHeaderCellDef> Prénom </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.prenom}} </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Numero de cin">
+                    <th mat-header-cell *matHeaderCellDef> Numéro de cin </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.cin}} </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Téléphone">
+                    <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.numTel}} </td>
+                  </ng-container>
+                  <!-- Symbol Column -->
+            
+                  <ng-container matColumnDef="Sexe">
+                    <th mat-header-cell *matHeaderCellDef> Sexe </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.sexe}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="Email">
+                    <th mat-header-cell *matHeaderCellDef> E-mail </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.email}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="niveauEtude">
+                    <th mat-header-cell *matHeaderCellDef> niveau d'étude </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.niveauEtude}} </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Date de naissance">
+                    <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.dateDeNaissance}} </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Lieu de naissance">
+                      <th mat-header-cell *matHeaderCellDef> Lieu </th>
+                      <td mat-cell *matCellDef="let etudiant"> {{etudiant.lieuDeNaissance}} </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Adresse">
+                    <th mat-header-cell *matHeaderCellDef> Adresse </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.adresse}} </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="Civilite">
+                    <th mat-header-cell *matHeaderCellDef> Civilité </th>
+                    <td mat-cell *matCellDef="let etudiant"> {{etudiant.civilite}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="icon">
+                    <th mat-header-cell *matHeaderCellDef> Actions</th>
+                    <td mat-cell *matCellDef="let etudiant">
+                      <div class="button-group">
+                        <button mat-icon-button class="edit-button" data-toggle="modal" data-target="#exampleModalCenter" (click)="openModal(etudiant.id)"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button class="delete-button" (click)="delete(etudiant.id)" ><mat-icon>delete_forever</mat-icon></button>
+                      </div> 
+                      </td>
+                  </ng-container>
+                  
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+        </div>
+    </div>
+  </div>
+  <!---------------------------------------------------------------------------------------->
+  
+                            <!-- Logout Modal-->
+                            <app-logout-modal></app-logout-modal>
+                            <!-- End Logout Modal-->
+  
+  <!---------------------------------------------------------------------------------------->
+  
+    
+  
+  

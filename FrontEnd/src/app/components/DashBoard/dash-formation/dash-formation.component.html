@@ -1,0 +1,514 @@
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+<!---------------------------------------------------------------------------------------->
+                        <!-- Sidebar -->    
+                        <app-sidebar></app-sidebar>
+                        <!-- End of Sidebar -->
+<!---------------------------------------------------------------------------------------->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+<!---------------------------------------------------------------------------------------->
+                        <!-- Topbar --> 
+                        <app-top-bar></app-top-bar>
+                        <!-- End of Topbar -->
+<!---------------------------------------------------------------------------------------->
+
+
+ <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Formation</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            
+          <mat-form-field  style="display: contents; height: 9vh;">
+            <mat-label>Search</mat-label>
+            <input  matInput (keyup)="applyFilter($event)" #input>
+            </mat-form-field>
+            
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800"></h1>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+                Add Formation
+              </button>
+          </div>
+          <!-- Button trigger modal -->
+
+
+
+
+
+
+
+
+
+<!-- -----------------------------------------------------Modal List Etudiant---------------------------------------------------------------- -->
+<div class="modal fade" id="ModalListEtudiant" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> <!-- Adjust modal-lg class for desired size -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title mb-2 text-center">List Etudiant</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800"></h1>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAjoutModuleAFormation">
+              Add Module
+            </button> -->
+        </div>
+      <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" mat-table [dataSource]="dataSource2" >
+        
+ 
+        <-- Name Column --
+        <ng-container matColumnDef="nomModule">
+          <th mat-header-cell *matHeaderCellDef> name</th>
+          <td mat-cell *matCellDef="let element"> {{element.nom}} {{element.prenom}} </td>
+        </ng-container>
+      
+        !-- Weight Column --
+        <ng-container matColumnDef="horaire">
+          <th mat-header-cell *matHeaderCellDef>  Numéro de cin </th>
+          <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
+        </ng-container>
+      
+        !-- Symbol Column --
+        <ng-container matColumnDef="formateur">
+          <th mat-header-cell *matHeaderCellDef> E-mail  </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+      
+        
+         
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Actions</th>
+            <td mat-cell *matCellDef="let element" class="text-end">
+              <div class="button-group">
+                <button mat-icon-button  class="delete-button" (click)="delete(element.idFormation)" ><mat-icon>delete_forever</mat-icon></button>
+            
+              </div>
+              </td>
+          </ng-container>
+          
+    
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table> -->
+      <table class="table">
+        <thead>
+          <tr>   
+            <th>Name & Last Name </th>
+            <th>Cin</th>
+            <th>email</th>
+            <!-- Add more columns as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through your list and generate rows -->
+          <tr *ngFor="let etudiant of EtudiantTable">
+            <td>{{ etudiant.nom }} {{ etudiant.prenom }}</td>
+            <td>{{ etudiant.cin }}</td>
+            <td>{{ etudiant.email }}</td>
+
+            <!-- Add more columns as needed -->
+          </tr>
+        </tbody>
+      </table>
+      
+    
+    
+    </div></div>
+    </div>
+  </div>
+</div>
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+
+ <!-- -----------------------------------------------------Modal Detail Formation---------------------------------------------------------------- -->
+ <div class="modal fade" id="ModalDetailFormation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title mb-2 text-center">Module</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800"></h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAjoutModuleAFormation">
+              Add Module
+            </button>
+        </div>
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" mat-table [dataSource]="dataSource1" >
+        
+ 
+        <!-- Name Column -->
+        <ng-container matColumnDef="nomModule">
+          <th mat-header-cell *matHeaderCellDef> nomModule </th>
+          <td mat-cell *matCellDef="let element"> {{element.nomModule}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="horaire">
+          <th mat-header-cell *matHeaderCellDef> horaire </th>
+          <td mat-cell *matCellDef="let element"> {{element.horaire}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="formateur">
+          <th mat-header-cell *matHeaderCellDef> formateur </th>
+          <td mat-cell *matCellDef="let element"> {{element.formateur.nom}} </td>
+        </ng-container>
+      
+        
+         
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Actions</th>
+            <td mat-cell *matCellDef="let element" class="text-end">
+              <div class="button-group">
+                <button mat-icon-button  class="delete-button" (click)="annulerModule(element.idModule)" ><mat-icon>delete_forever</mat-icon></button>
+            
+              </div>
+              </td>
+          </ng-container>
+          
+    
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table>
+        </div></div>
+    </div>
+  </div>
+</div>
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+
+<!-- ------------------------------------------------Modal Ajout Module A Formation---------------------------------------------------------------- -->
+<div class="modal fade" id="ModalAjoutModuleAFormation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title mb-2 text-center">Add Module</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myAddForm" (ngSubmit)="AddOnSubmit()" >
+
+
+          
+          <div>
+            <select class="form-select" form-selecttype="text" formControlName="AddModule" id="AddModule" name="AddModule"> 
+              <option value="" disabled selected>module</option>
+              <option  type="text" *ngFor="let module of dataModule" [value]="module.idModule">{{ module.nomModule }}</option>
+            </select>
+          </div>
+        <br>
+      
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" [disabled]="buttonDisabled" class="btn btn-primary" >Add</button>
+            </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+ <!-- -----------------------------------------------------Modal New---------------------------------------------------------------- -->
+ <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title mb-2 text-center">Add Formation</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myNewForm" (ngSubmit)="newOnSubmit()" >
+
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="NewnomFormation"  required>
+            <label for="NewnomFormation">nomFormation</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Newprix"  formControlName="Newprix" required>
+            <label for="Newprix">prix</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="NewdateDebutFormation"  formControlName="NewdateDebutFormation" required>
+            <label for="NewdateDebutFormation">dateDebutFormation</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="NewdateFinFormation"  formControlName="NewdateFinFormation" required>
+            <label for="NewdateFinFormation">dateFinFormation</label>
+          </div>
+
+          <!-- <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="Newhoraire"  formControlName="Newhoraire" required>
+            <label for="Newhoraire">Horaire</label>
+          </div>     -->
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="nbEtudiant"  formControlName="nbEtudiant" required>
+            <label for="nbEtudiant">nbEtudiant</label>
+          </div>    
+          <!-- <div>
+            <select class="form-select" form-selecttype="text" formControlName="Newmodules" id="Newmodules" name="Newmodules"> 
+              <option value="" disabled selected>module</option>
+              <option  type="text" *ngFor="let module of dataModule" [value]="module.nomModule">{{ module.nomModule }}</option>
+            </select>
+          </div> -->
+        
+        <div class="form-floating mb-3">
+          <select class="form-select" form-selecttype="text" id="NewEtat" formControlName="NewEtat">
+            <option value="" disabled selected>Etat</option>
+            <option value="INACTIVE" selected>INACTIVE</option>
+            <option value="WAITING">WAITING</option>
+            <option value="IN_PROGRESS" >IN_PROGRESS</option>
+            <option value="ACTIVE" >ACTIVE</option>
+            <option value="SUSPENDED" >SUSPENDED</option>
+            <option value="FAIL" >FAIL</option>
+          </select>
+        </div>
+          <div class="form-floating mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="fileUpload1" (change)="onFileSelected($event)" #fileUpload1 onchange="console.log(event.target.files)">
+              <label class="custom-file-label">Upload you photo</label>
+            </div>
+          </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" [disabled]="buttonDisabled" class="btn btn-primary" >Submit</button>
+            </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+  <!-- -----------------------------------------------------Modal Update---------------------------------------------------------------- -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Update Formation</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+
+
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="nomFormation"  formControlName="nomFormation" required>
+                  <label for="nomFormation">nomFormation</label>
+                </div>
+  
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="prix"  formControlName="prix" required>
+                  <label for="prix">prix</label>
+                </div>
+  
+                <div class="form-floating mb-3">
+                  <input type="date" class="form-control" id="dateDebutFormation"  formControlName="dateDebutFormation" required>
+                  <label for="dateDebutFormation">dateDebutFormation</label>
+                </div>
+  
+                <div class="form-floating mb-3">
+                  <input type="date" class="form-control" id="dateFinFormation"  formControlName="dateFinFormation" required>
+                  <label for="dateFinFormation">dateFinFormation</label>
+                </div>
+  
+                <!-- <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="horaire"  formControlName="horaire" required>
+                  <label for="horaire">Horaire</label>
+                </div>     -->
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="nbEtudianta"  formControlName="nbEtudianta" required>
+                  <label for="nbEtudianta">nbEtudiant</label>
+                </div>  
+                <!-- <div>
+                  <select class="form-select" form-selecttype="text" formControlName="modules" id="modules" name="modules"> 
+                    <option value="" disabled selected>module</option>
+                    <option  type="text" *ngFor="let module of dataModule" [value]="module.nomModule">{{ module.nomModule }}</option>
+                  </select>
+                </div>
+<br> -->
+
+              <div class="form-floating mb-3">
+                  <select class="form-select" id="etat" formControlName="etat">
+                    <option value="" disabled selected>Etat</option>
+                    <option value="INACTIVE">INACTIVE</option>
+                    <option value="WAITING">WAITING</option>
+                    <option value="IN_PROGRESS">IN_PROGRESS</option>
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="SUSPENDED">SUSPENDED</option>
+                    <option value="FAIL">FAIL</option>
+                  </select>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+                    <label class="custom-file-label" for="photoEtudiant">Upload you photo</label>
+                  </div>
+                </div>
+               
+                
+                <!--<button type="submit" class="btn btn-primary btn-orange  w-100 mt-3" (click)="login()">Login</button>
+                            <button type="submit" class="btn btn-primary btn-orange  w-100 mt-3" [disabled]="addForm.invalid" routerLink="/Singin">Register</button>-->
+  
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" [disabled]="buttonDisabled" class="btn btn-primary" >Submit</button>
+                  </div>
+                <!--<button type="submit" class="btn btn-primary btn-orange  w-100 mt-3" >Submit</button>-->
+              </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+  <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+ 
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" mat-table [dataSource]="dataSource" >
+        
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> Photo </th>
+              <td mat-cell *matCellDef="let element"> <a href="" type="Button" data-toggle="modal" data-target="#ModalDetailFormation" (click)="openDetailFormationModal(element.idFormation)"  ><img src="assets/UploadImages/FormationImages/{{element.photo}}"  width="80" style="border-radius: 10%;"></a> 
+              </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Nom de Formation">
+              <th mat-header-cell *matHeaderCellDef> Nom de Formation </th>
+              <td mat-cell *matCellDef="let element">{{element.nomFormation}}</td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="prix">
+              <th mat-header-cell *matHeaderCellDef> prix </th>
+              <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="dateDebut">
+              <th mat-header-cell *matHeaderCellDef> dateDebut </th>
+              <td mat-cell *matCellDef="let element"> {{element.dateDebutFormation | date}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="dateFin">
+                <th mat-header-cell *matHeaderCellDef> dateFin </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateFinFormation | date}} </td>
+              </ng-container>
+        
+            <ng-container matColumnDef="horaire">
+                <th mat-header-cell *matHeaderCellDef> horaire </th>
+                <td mat-cell *matCellDef="let element"> {{element.horaire}} </td>
+              </ng-container>
+             
+              <ng-container matColumnDef="etat">
+                <th mat-header-cell *matHeaderCellDef> Etat </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <div *ngIf="element.etat == 'INACTIVE'" > 
+                    <div style="color: rgb(123, 13, 196); font-weight: bold;"> {{element.etat}}</div> 
+                   </div>
+                  <div *ngIf="element.etat == 'WAITING'" > 
+                   <div style="color: rgb(104, 95, 112); font-weight: bold;"> {{element.etat}}</div> 
+                  </div>
+                  <div *ngIf="element.etat == 'IN_PROGRESS'" > 
+                    <div style="color: orange; font-weight: bold;"> {{element.etat}}</div> 
+                  </div>
+                  <div *ngIf="element.etat == 'ACTIVE'" > 
+                    <div style="color: rgb(2, 107, 7); font-weight: bold;"> {{element.etat}}</div> 
+                  </div>
+                  <div *ngIf="element.etat == 'SUSPENDED'" > 
+                    <div style="color: rgb(0, 43, 145); font-weight: bold;"> {{element.etat}}</div> 
+                  </div>
+                  <div *ngIf="element.etat == 'FAIL'" > 
+                    <div style="color: rgb(147, 2, 2); font-weight: bold;"> {{element.etat}}</div> 
+                  </div>
+
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="nbEtudiant">
+                <th mat-header-cell *matHeaderCellDef> nbEtudiant </th>
+                <td mat-cell *matCellDef="let element"> {{element.nbEtudiant}} </td>
+              </ng-container>
+              
+               <!-- <ng-container matColumnDef="affect">
+                <th mat-header-cell *matHeaderCellDef> Affect </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <button mat-icon-button (click)="openAffectTeacherModal(element.idFormation)">
+                    <mat-slide-toggle [(ngModel)]="toggleValues[element.idFormation]"></mat-slide-toggle>
+                  </button>
+                </td>
+              </ng-container>  -->
+              
+              
+
+             
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Actions</th>
+                <td mat-cell *matCellDef="let element" class="text-end">
+                  <div class="button-group">
+                    <button mat-icon-button class="edit-button"  style="color: crimson;" type="Button" data-toggle="modal" data-target="#ModalListEtudiant" (click)="openListEtudiantModal(element.idFormation)"><mat-icon>list</mat-icon></button>
+
+                    <button mat-icon-button class="edit-button"  style="color: crimson;" type="Button" data-toggle="modal" data-target="#ModalDetailFormation" (click)="openDetailFormationModal(element.idFormation)"><mat-icon>add</mat-icon></button>
+                    <button mat-icon-button class="edit-button" data-toggle="modal" data-target="#exampleModalCenter" (click)="openModal(element.idFormation)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button  class="delete-button" (click)="delete(element.idFormation)" ><mat-icon>delete_forever</mat-icon></button>
+                  </div>
+                  </td>
+              </ng-container>
+              
+        
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+    </div>
+</div>
+ <!---------------------------------------------------------------------------------------->
+
+                            <!-- Logout Modal-->
+                            <app-logout-modal></app-logout-modal>
+                            <!-- End Logout Modal-->
+
+<!---------------------------------------------------------------------------------------->
+
+    

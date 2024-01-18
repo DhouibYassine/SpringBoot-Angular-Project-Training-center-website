@@ -1,0 +1,119 @@
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <div class="logo" style="padding: 0;
+    margin: 0;
+    max-height: 90px;">
+      <a href="Home" class="logo me-auto"> <img src="assets/img/logoMtc.png" alt="logo" ></a>
+    </div>
+    <nav id="navbar" class="navbar order-last order-lg-0" [class.navbar-mobile]="mobileNavActive">
+      <ul>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/WebSiteHome') }" href="WebSiteHome">Home</a></li>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/About') }"href="About">About</a></li>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/Cources') }"href="Cources">Courses</a></li>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/Trainers') }"href="Trainers">Trainers</a></li>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/Events') }"href="Events">Events</a></li>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/becomeatrainer') }"href="becomeatrainer">become a trainer</a></li>
+        <li><a style="text-decoration: none;" class="link" [ngClass]="{ 'active': isActive('/Contact') }" href="Contact">Contact</a></li>
+      </ul>
+
+      <i class="bi bi-list mobile-nav-toggle" (click)="toggleMobileNav()">dddddd</i>
+      <i class="bi bi-x mobile-nav-close" (click)="toggleMobileNav()">ddd</i>
+    </nav><!-- .navbar -->   
+
+
+
+
+
+
+    <a *ngIf="_CURRENT_ID == null"  href="Login"style="text-decoration: none;" class="get-started-btn">Log in</a>
+
+
+
+
+<!-------------------------------------------------------------------------------------------------------------->
+    <div *ngIf="_CURRENT_USER =='Etudiant'">
+      <form *ngIf="_CURRENT_ID != null">
+            <div  class="row justify-content-center text-center">
+              <div class="col-md-5">
+                <div class="dropdown custom-dropdown">
+                  <a href="#" data-toggle="dropdown" class="d-flex align-items-center dropdown-link text-left" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">
+                 
+                    <div class="profile-pic mr-3" *ngIf="_CURRENT_DATA.sexe =='homme'">
+                      <img *ngIf="_CURRENT_DATA.photo !=null " src="assets/UploadImages/{{_CURRENT_DATA.photo}}"  width="60" style="border-radius: 50%;">
+                      <img *ngIf="_CURRENT_DATA.photo ==null" src="assets/User/boy.jpg"  width="60" style="border-radius: 50%;">
+                    </div>
+
+                    <div class="profile-pic mr-3" *ngIf="_CURRENT_DATA.sexe =='femme'">
+                       <img *ngIf="_CURRENT_DATA.photo !=null" src="assets/UploadImages/{{_CURRENT_DATA.photo}}"  width="60" style="border-radius: 50%;">
+                       <img *ngIf="_CURRENT_DATA.photo ==null" src="assets/User/girl.jpg"  width="60" style="border-radius: 50%;">
+                    </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >                   
+                    <a class="dropdown-item" href="Parametres"> <span class="icon icon-dashboard"></span>{{_CURRENT_DATA.prenom}} {{_CURRENT_DATA.nom}} </a>
+                    <a class="dropdown-item" href="EspaceEtudiant"> <span class="icon icon-dashboard"></span>espace {{  _CURRENT_USER  }}</a>
+                    <a (click)="LogOut()" class="dropdown-item" href="#"><span class="icon icon-sign-out"></span>Log out</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </form>
+    </div>
+<!-------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------->
+<div *ngIf="_CURRENT_USER =='Formateur'">
+  <form *ngIf="_CURRENT_ID != null">
+        <div  class="row justify-content-center text-center">
+          <div class="col-md-5">
+            <div class="dropdown custom-dropdown">
+              <a href="#" data-toggle="dropdown" class="d-flex align-items-center dropdown-link text-left" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">
+             
+                <div class="profile-pic mr-3" *ngIf="_CURRENT_DATA.sexe =='homme'">
+                  <img *ngIf="_CURRENT_DATA.photo !=null " src="assets/UploadImages/{{_CURRENT_DATA.photo}}"  width="60" style="border-radius: 50%;">
+                  <img *ngIf="_CURRENT_DATA.photo ==null" src="assets/User/professeur.jpg"  width="60" style="border-radius: 50%;">
+                </div>
+
+                <div class="profile-pic mr-3" *ngIf="_CURRENT_DATA.sexe =='femme'">
+                   <img *ngIf="_CURRENT_DATA.photo !=null" src="assets/UploadImages/{{_CURRENT_DATA.photo}}"  width="60" style="border-radius: 50%;">
+                   <img *ngIf="_CURRENT_DATA.photo ==null" src="assets/User/professeura.jpg"  width="60" style="border-radius: 50%;">
+                </div>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >                   
+                <a class="dropdown-item" href="Parametres"> <span class="icon icon-dashboard"></span>{{_CURRENT_DATA.prenom}} {{_CURRENT_DATA.nom}} </a>
+                <a class="dropdown-item" href="EspaceFormateur"> <span class="icon icon-dashboard"></span>espace {{  _CURRENT_USER  }}</a>
+                <a (click)="LogOut()" class="dropdown-item" href="#"><span class="icon icon-sign-out"></span>Log out</a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </form>
+</div>
+<!-------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------->
+<div *ngIf="_CURRENT_USER =='Admin'">
+    <form *ngIf="_CURRENT_ID != null">
+          <div  class="row justify-content-center text-center">
+            <div class="col-md-5">
+              <div class="dropdown custom-dropdown">
+                <a href="#" data-toggle="dropdown" class="d-flex align-items-center dropdown-link text-left" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">
+                  <div class="profile-pic mr-3">
+                    <img src="assets/User/admin.jpg"  width="60" style="border-radius: 50%;">
+                  </div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >                   
+                  <!-- <a class="dropdown-item" href="#"> <span class="icon icon-dashboard"></span>{{_CURRENT_DATA.prenom}} {{_CURRENT_DATA.nom}} </a> -->
+                  <a class="dropdown-item" href="DashHome"> <span class="icon icon-dashboard"></span>Dashboard {{  _CURRENT_USER  }}</a>
+                  <a (click)="LogOut()" class="dropdown-item" href="#"><span class="icon icon-sign-out"></span>Log out</a>
+                </div>
+              </div>
+          </div>
+        </div>
+    </form>
+  </div>
+<!-------------------------------------------------------------------------------------------------------------->
+
+
+
+  </div>
+</header><!-- End Header -->

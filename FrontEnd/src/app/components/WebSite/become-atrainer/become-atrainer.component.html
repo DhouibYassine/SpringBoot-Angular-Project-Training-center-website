@@ -1,0 +1,115 @@
+
+<app-site-header></app-site-header>
+
+<br> 
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title mb-2 text-center">become a trainer</h2>
+            <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="nomFormateur" placeholder="Nom" formControlName="nomFormateur" required>
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="text" class="form-control" id="prenomFormateur" placeholder="Prénom" formControlName="prenomFormateur" required>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="number" class="form-control" id="cinFormateur" placeholder="Num Cin" formControlName="cinFormateur" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <select class="form-select" id="sexeFormateur" placeholder="Sexe"  formControlName="sexeFormateur">
+                  <option value="">Sexe</option>
+                  <option value="homme">Homme</option>
+                  <option value="femme">Femme</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="row">
+
+              <div class="col-md-6 form-group">
+                <input type="email" class="form-control" id="emailFormateur" placeholder="E-mail" formControlName="emailFormateur" required>
+              </div>
+
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="number" class="form-control" id="numTelFormateur" placeholder="Num Tel" formControlName="numTelFormateur" required>
+              </div>
+
+              </div>
+              
+              <label>date de naissance</label>
+
+                  <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="date" class="form-control" id="dateDeNaissanceFormateur"   formControlName="dateDeNaissanceFormateur">
+                  </div>
+
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="text" class="form-control" id="lieuDeNaissanceFormateur" placeholder="Lieu" formControlName="lieuDeNaissanceFormateur" required>
+                  </div>
+                  </div>    
+            
+              
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" id="adresseFormateur" placeholder="Adresse" formControlName="adresseFormateur" required>
+              </div>
+
+
+              <div class="row">
+                  <div class="col-md-6 form-group">
+                    <select class="form-select" id="civiliteFormateur" formControlName="civiliteFormateur">
+                      <option value="" disabled selected>Civilité</option>
+                      <option value="Tunisienne">Tunisienne</option>
+                      <option value="Française">Française</option>
+                      <option value="Autre">Autre</option>
+                    </select>
+                  </div>
+                
+           <div class="col-md-6 form-group mt-3 mt-md-0">
+            <select class="form-select" id="niveauEtudeFormateur" formControlName="niveauEtudeFormateur">
+              <option value="" disabled selected>You are</option>
+              <option value="Etudiant">Etudiant</option>
+              <option value="Enseignant">Enseignant</option>
+            </select>
+            </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelectedCV($event)" #fileUpload onchange="console.log(event.target.files)">
+                    <label class="custom-file-label" for="CVFormateur">Upload you CV</label>
+                  </div>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+                    <label class="custom-file-label" for="photoFormateur">Upload you photo</label>
+                  </div>
+                </div>
+              </div>
+                
+              <button type="submit" class="btn btn-success  w-100 mt-3" >Submit</button>
+            </form>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <br><br><br><br><br><br>
+
+  <app-site-footer></app-site-footer>
+  

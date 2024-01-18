@@ -1,0 +1,242 @@
+<app-site-header></app-site-header>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Learning Today,<br>Leading Tomorrow</h1>
+      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <a href="Cources" class="btn-get-started">Get Started</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="../../../../assets/Site/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Students</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Courses</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Events</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Trainers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Why Choose FormaLAB?</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+              </p>
+              <div class="text-center">
+                <a href="About" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>Corporis voluptates sit</h4>
+                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Ullamco laboris ladore pan</h4>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-images"></i>
+                    <h4>Labore consequatur</h4>
+                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+
+
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Courses</h2>
+          <p>Popular Courses</p>
+        </div>
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          <ng-container *ngFor="let data of Data.slice(0, 3);; let i = index">
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngIf="data.etat=='WAITING'">
+              <div class="course-item">
+             <a href=""> <img src="assets/UploadImages/FormationImages/{{data.photo}}" class="img-fluid" alt="..."></a>
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                  <a (click)="Subscribe(data.idFormation)" href="javascript:void(0)" style="text-decoration: none;"><h4>Subscribe</h4></a>
+                  </div>
+                  <div>
+                      <div *ngFor="let x of data.listeModules" style="display: flex; flex-direction: column;">
+                        <h5 class="price">{{ x.nomModule }}</h5>
+                      </div>
+                    </div>
+
+                </div>
+                <!-- <h3><a href="course-details.html">{{data.nomFormation}}</a></h3> -->
+                <h3>Formation : {{data.nomFormation}}  </h3>
+                <h3>Instructional hours : {{data.horaire}}</h3>
+                <h4>   {{data.dateDebutFormation | date}}  
+                  <div class=" d-flex justify-content-between align-items-center">
+
+                    <!-- <div class="trainer-profile d-flex align-items-center">
+                      <img src="assets/Site/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                      <span>plus..</span>
+                      
+                    </div> -->
+                    <div class="trainer-rank d-flex align-items-center" >
+                      <i class="bx bx-user"></i>&nbsp;{{data.listeEtudiants.length}}
+                    </div>
+                    <div class="trainer-profile d-flex align-items-center">
+                      <!-- <a href="javascript:void(0)" (click)="More(data.idFormation)" ><span>More ..</span></a> -->
+                      <h2>{{data.prix}} DT</h2>
+
+                    </div>
+                    
+                  </div>
+                </h4>
+               
+              </div>
+           
+          </div>
+          </div> <!-- End Course Item-->
+</ng-container>
+  </div>
+
+      </div>
+    </section><!-- End Popular Courses Section -->
+
+    <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Trainers</h2>
+          <p>Our Trainers</p>
+        </div>
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngFor="let data of DataModule.slice(0, 3); let i = index" >
+            <div class="member" *ngIf="data.formateur.etat=='ACCEPTED'">
+
+              <div *ngIf="data.formateur.sexe =='homme'">
+                <a href=""><img *ngIf="data.formateur.photo !=null " src="assets/UploadImages/{{data.formateur.photo}}" class="img-fluid" alt="" ></a> 
+                <a href=""><img *ngIf="data.formateur.photo ==null" src="assets/User/professeur.jpg" class="img-fluid" alt=""></a> 
+                </div>
+
+                <div *ngIf="data.formateur.sexe =='femme'">
+                  <a href=""><img *ngIf="data.formateur.photo !=null" src="assets/UploadImages/{{data.formateur.photo}}" class="img-fluid" alt=""></a> 
+                  <a href=""><img *ngIf="data.formateur.photo ==null" src="assets/User/professeura.jpg"  class="img-fluid" alt=""></a> 
+                </div>
+              <div class="member-content">
+                <h4>{{data.formateur.nom}} {{data.formateur.prenom}}</h4>
+                <h3>{{data.nomModule}}</h3>
+                <p>
+                  <!-- Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut -->
+                </p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+         
+
+        </div>
+
+      </div>
+    </section><!-- End Trainers Section -->
+
+  </main><!-- End #main -->
+
+
+  
+  
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <app-site-footer></app-site-footer>

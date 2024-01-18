@@ -1,0 +1,65 @@
+<app-site-header></app-site-header>
+
+<main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Courses</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          <ng-container *ngFor="let data of DataModule; let i = index">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
+              <div class="course-item">
+                <a href=""> <img src="assets/UploadImages/FormationImages/{{data.idModule}}" class="img-fluid" alt="..."></a>
+                 <div class="course-content">
+                   <div class="d-flex justify-content-between align-items-center mb-3">
+                     <div>
+                     <!-- <a (click)="Subscribe(data.idModule)" href="javascript:void(0)" style="text-decoration: none;"><h4>Subscribe</h4></a> -->
+                     </div>
+                       <p class="price">{{data.nomModule}} DT</p>
+                   </div>
+                   
+                   <h3><a href="course-details.html">{{data.horaire}}</a></h3>
+                   <p>   {{data.nombreDeSeance | date}}</p>
+                   <div class="trainer d-flex justify-content-between align-items-center">
+   
+                     <!-- <div class="trainer-profile d-flex align-items-center">
+                       <img src="assets/Site/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                       <span>plus..</span>
+                       
+                     </div> -->
+                     <div class="trainer-rank d-flex align-items-center">
+                       <i class="bx bx-user"></i>&nbsp;50
+                     </div>
+                     <div class="trainer-profile d-flex align-items-center">
+                       <a href=""><span>More ..</span></a>
+                       
+                     </div>
+                     
+                   </div>
+                 </div>
+              
+             </div>
+            </div>
+          </ng-container>
+          
+              
+          </div> <!-- End Course Item-->
+
+  </div>
+
+    </section><!-- End Courses Section -->
+
+  </main><!-- End #main -->
+
+  <app-site-footer></app-site-footer>

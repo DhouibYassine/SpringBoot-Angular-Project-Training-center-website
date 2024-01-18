@@ -1,0 +1,40 @@
+
+ 
+  .edit-button, .delete-button {
+    background-color: transparent;
+    border: none;
+    color: #999999;
+    transition: color 0.3s ease;
+    margin-right: 8px; /* Adjust the margin value as needed */
+  }
+  
+  .edit-button:hover {
+    color: #1a8806;
+  }
+  .delete-button:hover {
+    color: #ff0000;
+  }
+  .edit-button{
+    margin-right: 8px;
+  }
+
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .edit-button {
+    position: relative;
+    right: -30px; /* Adjust the position as needed */
+  }
+  
+  .delete-button {
+    position: relative;
+    right: -90px; /* Adjust the position as needed */
+  }
+  .edit-button,
+  .delete-button {
+    padding: 8px; /* Increase the padding value to make the buttons bigger */
+    font-size: 16px; /* Increase the font size to make the buttons bigger */
+}

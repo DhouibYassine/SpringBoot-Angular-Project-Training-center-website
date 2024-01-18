@@ -1,0 +1,438 @@
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+<!---------------------------------------------------------------------------------------->
+                      <!-- Sidebar -->    
+                      <app-sidebar></app-sidebar>
+                      <!-- End of Sidebar -->
+<!---------------------------------------------------------------------------------------->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+          <!-- Main Content -->
+          <div id="content">
+
+<!---------------------------------------------------------------------------------------->
+                      <!-- Topbar --> 
+                      <app-top-bar></app-top-bar>
+                      <!-- End of Topbar -->
+<!---------------------------------------------------------------------------------------->
+
+<div class="card shadow mb-4">
+
+  <div class="card-header py-3">
+      <h4 class="m-0 font-weight-bold text-primary">Formateur</h4>
+  </div>
+  
+  <div class="card-body">
+      <div class="table-responsive">
+      
+            <!-- Button trigger modal -->      
+              <mat-form-field style="display: flex; height: 10vh;">
+                <mat-label>Search</mat-label>
+                <input  matInput (keyup)="applyFilter($event)" #input>
+              </mat-form-field>
+              
+              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800"></h1>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  <mat-icon class="btn-icon">person_add</mat-icon>
+                  <span class="btn-text"> Add formateur </span>
+                  
+                </button>
+                
+                
+
+            </div>    
+
+            <!-- -----------------------------------------------------Accept Formateur---------------------------------------------------------------- -->
+            <div class="modal fade" id="AcceptFormateurModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Accept Formateur</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form  [formGroup]="myAcceptForm" (ngSubmit)="AcceptOnSubmit()">
+
+                      <div class="row">
+                        <div class="col-md-6 form-group">
+                          <input type="text" class="form-control" id="passwordFormateur" placeholder="passwordFormateur" formControlName="passwordFormateur" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <select class="form-select" id="etatFormateur" formControlName="etatFormateur">
+                            <option value="" disabled selected>Etat</option>
+                            <option value="WAITING">WAITING</option>
+                            <option value="ACCEPTED">ACCEPTED</option>  
+                          </select>
+                        </div>                    
+                      </div>
+                        <button type="submit" [disabled]="buttonDisabled" class="btn btn-primary  w-100 mt-3" >Submit</button>
+                      </form>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+
+            <!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
+
+            <!-- -----------------------------------------------------New Formateur---------------------------------------------------------------- -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form  [formGroup]="myNewForm" (ngSubmit)="newOnSubmit()">
+  
+                      <div class="row">
+                        <div class="col-md-6 form-group">
+                          <input type="text" class="form-control" id="newnom" placeholder="Nom" formControlName="newnom" required>
+                        </div>
+          
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <input type="text" class="form-control" id="newprenom" placeholder="Prénom" formControlName="newprenom" required>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6 form-group">
+                          <input type="number" class="form-control" id="newcin" placeholder="Num Cin" formControlName="newcin" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <select class="form-select" id="newsexe" placeholder="Sexe"  formControlName="newsexe">
+                            <option value="">Sexe</option>
+                            <option value="homme">Homme</option>
+                            <option value="femme">Femme</option>
+                          </select>
+                        </div>
+                      </div>
+          
+                        <div class="row">
+          
+                        <div class="col-md-6 form-group">
+                          <input type="email" class="form-control" id="newemail" placeholder="E-mail" formControlName="newemail" required>
+                        </div>
+          
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <input type="number" class="form-control" id="newnumTel" placeholder="Num Tel" formControlName="newnumTel" required>
+                        </div>
+          
+                        </div>
+                        
+                        <label>date de naissance</label>
+          
+                            <div class="row">
+                            <div class="col-md-6 form-group">
+                              <input type="date" class="form-control" id="newdateDeNaissance"   formControlName="newdateDeNaissance">
+                            </div>
+          
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                              <input type="text" class="form-control" id="newlieuDeNaissance" placeholder="Lieu" formControlName="newlieuDeNaissance" required>
+                            </div>
+                            </div>    
+                      
+                        
+                        <div class="form-group mt-3">
+                          <input type="text" class="form-control" id="newadresse" placeholder="Adresse" formControlName="newadresse" required>
+                        </div>
+          
+          
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                              <select class="form-select" id="newcivilite" formControlName="newcivilite">
+                                <option value="" disabled selected>Civilité</option>
+                                <option value="Tunisienne">Tunisienne</option>
+                                <option value="Française">Française</option>
+                                <option value="Autre">Autre</option>
+                              </select>
+                            </div>
+                          
+                     <div class="col-md-6 form-group mt-3 mt-md-0">
+                      <select class="form-select" id="newniveauEtude" formControlName="newniveauEtude">
+                        <option value="" disabled selected>You are</option>
+                        <option value="Etudiant">Etudiant</option>
+                        <option value="Enseignant">Enseignant</option>
+                      </select>
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <select class="form-select" id="newEtat" formControlName="newEtat">
+                          <option value="" disabled selected>Etat</option>
+                          <option value="WAITING">WAITING</option>
+                          <option value="ACCEPTED">ACCEPTED</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 form-group">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelectedCV($event)" #fileUpload onchange="console.log(event.target.files)">
+                              <label class="custom-file-label" for="CVFormateur">Upload you CV</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+                              <label class="custom-file-label" for="photoFormateur">Upload you photo</label>
+                            </div>
+                          </div>
+                        </div>
+                          
+                        <button type="submit" [disabled]="buttonDisabled" class="btn btn-primary  w-100 mt-3" >Submit</button>
+                      </form>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+
+            <!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
+
+            <!-- -----------------------------------------------------Modal Update---------------------------------------------------------------- -->
+                      <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Update</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+                                <div class="row">
+                                  <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="nomFormateur" placeholder="Nom" formControlName="nomFormateur" required>
+                                  </div>
+                    
+                                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="text" class="form-control" id="prenomFormateur" placeholder="Prénom" formControlName="prenomFormateur" required>
+                                  </div>
+                                </div>
+                                
+                                <div class="row">
+                                  <div class="col-md-6 form-group">
+                                    <input type="number" class="form-control" id="cinFormateur" placeholder="Num Cin" formControlName="cinFormateur" required>
+                                  </div>
+                                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <select class="form-select" id="sexeFormateur" placeholder="Sexe"  formControlName="sexeFormateur">
+                                      <option value="">Sexe</option>
+                                      <option value="homme">Homme</option>
+                                      <option value="femme">Femme</option>
+                                    </select>
+                                  </div>
+                                </div>
+                    
+                                  <div class="row">
+                    
+                                  <div class="col-md-6 form-group">
+                                    <input type="email" class="form-control" id="emailFormateur" placeholder="E-mail" formControlName="emailFormateur" required>
+                                  </div>
+                    
+                                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="number" class="form-control" id="numTelFormateur" placeholder="Num Tel" formControlName="numTelFormateur" required>
+                                  </div>
+                    
+                                  </div>
+                                  
+                                  <label>date de naissance</label>
+                    
+                                      <div class="row">
+                                      <div class="col-md-6 form-group">
+                                        <input type="date" class="form-control" id="dateDeNaissanceFormateur"   formControlName="dateDeNaissanceFormateur">
+                                      </div>
+                    
+                                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                                        <input type="text" class="form-control" id="lieuDeNaissanceFormateur" placeholder="Lieu" formControlName="lieuDeNaissanceFormateur" required>
+                                      </div>
+                                      </div>    
+                                
+                                  
+                                  <div class="form-group mt-3">
+                                    <input type="text" class="form-control" id="adresseFormateur" placeholder="Adresse" formControlName="adresseFormateur" required>
+                                  </div>
+                    
+                    
+                                  <div class="row">
+                                      <div class="col-md-6 form-group">
+                                        <select class="form-select" id="civiliteFormateur" formControlName="civiliteFormateur">
+                                          <option value="" disabled selected>Civilité</option>
+                                          <option value="Tunisienne">Tunisienne</option>
+                                          <option value="Française">Française</option>
+                                          <option value="Autre">Autre</option>
+                                        </select>
+                                      </div>
+                                    
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                  <select class="form-select" id="niveauEtudeFormateur" formControlName="niveauEtudeFormateur">
+                                    <option value="" disabled selected>You are</option>
+                                    <option value="Etudiant">Etudiant</option>
+                                    <option value="Enseignant">Enseignant</option>
+                                  </select>
+                                  </div>
+                                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <select class="form-select" id="etatFormateur" formControlName="etatFormateur">
+                                      <option value="" disabled selected>Etat</option>
+                                      <option value="WAITING">WAITING</option>
+                                      <option value="ACCEPTED">ACCEPTED</option>
+                                    </select>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-6 form-group">
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelectedCV($event)" #fileUpload onchange="console.log(event.target.files)">
+                                        <label class="custom-file-label" for="CVFormateur">Upload you CV</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="fileUpload" (change)="onFileSelected($event)" #fileUpload onchange="console.log(event.target.files)">
+                                        <label class="custom-file-label" for="photoFormateur">Upload you photo</label>
+                                      </div>
+                                    </div>
+                                  </div>                 
+                                  <button type="submit" [disabled]="buttonDisabled" class="btn btn-primary  w-100 mt-3" >Submit</button>
+                                </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            <!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
+                    
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" mat-table [dataSource]="dataSource">
+
+                
+                <!-- <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.id}} </td>
+                </ng-container> -->
+                <ng-container matColumnDef="photo">
+                  <th mat-header-cell *matHeaderCellDef>Photo </th>
+                  <td mat-cell *matCellDef="let formateur">
+
+                    <div *ngIf="formateur.sexe =='homme'">
+                      <a href=""><img *ngIf="formateur.photo !=null " src="assets/UploadImages/{{formateur.photo}}"  width="60" style="border-radius: 70%;"></a> 
+                      <a href=""><img *ngIf="formateur.photo ==null" src="assets/User/professeur.jpg"  width="60" style="border-radius: 50%;"></a> 
+                      </div>
+
+                      <div *ngIf="formateur.sexe =='femme'">
+                        <a href=""><img *ngIf="formateur.photo !=null" src="assets/UploadImages/{{formateur.photo}}"  width="60" style="border-radius: 50%;"></a> 
+                        <a href=""><img *ngIf="formateur.photo ==null" src="assets/User/professeura.jpg"  width="60" style="border-radius: 50%;"></a> 
+                      </div>
+
+                  </td>
+                </ng-container>
+                <!-- Name Column -->
+                <ng-container matColumnDef="Nom">
+                  <th mat-header-cell *matHeaderCellDef> Nom </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.nom}} </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Prenom">
+                  <th mat-header-cell *matHeaderCellDef> Prénom </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.prenom}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Numero de cin">
+                  <th mat-header-cell *matHeaderCellDef> Numéro de cin </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.cin}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Téléphone">
+                  <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.numTel}} </td>
+                </ng-container>
+                <!-- Symbol Column -->
+          
+                <ng-container matColumnDef="Sexe">
+                  <th mat-header-cell *matHeaderCellDef> Sexe </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.sexe}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="Email">
+                  <th mat-header-cell *matHeaderCellDef> E-mail </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.email}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="niveauEtude">
+                  <th mat-header-cell *matHeaderCellDef> niveau d'étude </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.niveauEtude}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Date de naissance">
+                  <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.dateDeNaissance}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Lieu de naissance">
+                    <th mat-header-cell *matHeaderCellDef> Lieu </th>
+                    <td mat-cell *matCellDef="let formateur"> {{formateur.lieuDeNaissance}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Adresse">
+                  <th mat-header-cell *matHeaderCellDef> Adresse </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.adresse}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Civilite">
+                  <th mat-header-cell *matHeaderCellDef> Civilité </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.civilite}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cv">
+                  <th mat-header-cell *matHeaderCellDef> Cv </th>                
+                  <td mat-cell *matCellDef="let formateur"> 
+                    <button mat-icon-button  class="download-button" color="warn" ><mat-icon>download_for_offline</mat-icon></button>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="etat">
+                  <th mat-header-cell *matHeaderCellDef> Etat </th>
+                  <td mat-cell *matCellDef="let formateur"> {{formateur.etat}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="icon">
+                  <th mat-header-cell *matHeaderCellDef> Actions</th>
+                  <td mat-cell *matCellDef="let formateur" class="text-end">
+                    <div class="button-group">
+                    <button mat-icon-button class="edit-button" data-toggle="modal" data-target="#exampleModalCenter1" (click)="openModal(formateur.id)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button class="delete-button" color="warn" (click)="delete(formateur.id)" ><mat-icon>delete_forever</mat-icon></button>
+                    <button mat-icon-button  class="Affect-button" color="warn" data-toggle="modal" data-target="#AcceptFormateurModalCenter" (click)="openAcceptedModal(formateur.id)"><mat-icon><span class="material-icons-outlined">
+                      published_with_changes
+                      </span></mat-icon></button>
+                  </div>
+                  </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+      </div>
+  </div>
+</div>
+
+<!---------------------------------------------------------------------------------------->
+
+                          <!-- Logout Modal-->
+                          <app-logout-modal></app-logout-modal>
+                          <!-- End Logout Modal-->
+
+<!---------------------------------------------------------------------------------------->
+
+  
+

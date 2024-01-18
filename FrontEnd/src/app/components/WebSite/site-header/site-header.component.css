@@ -1,0 +1,26 @@
+#header .logo img {
+    padding: 0;
+    margin: 0;
+    max-height: 70px;
+  }
+#link{
+  text-decoration: none;
+}
+
+.mobile-nav-close {
+  display: none; /* hide the button by default */
+}
+
+.navbar-mobile .mobile-nav-close {
+  display: block; /* show the button when mobile menu is active */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*-----------------------------------------------------------------*/

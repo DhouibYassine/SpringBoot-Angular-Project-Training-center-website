@@ -1,0 +1,71 @@
+<app-site-header></app-site-header>
+
+<main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Courses</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          <ng-container *ngFor="let data of datatemp; let i = index">
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngIf="data.etat=='WAITING'">
+              <div class="course-item">
+             <a href=""> <img src="assets/UploadImages/FormationImages/{{data.photo}}" class="img-fluid" alt="..."></a>
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                  <a (click)="Subscribe(data.idFormation)" href="javascript:void(0)" style="text-decoration: none;"><h4>Subscribe</h4></a>
+                  </div>
+                  <div>
+                      <div *ngFor="let x of data.listeModules" style="display: flex; flex-direction: column;">
+                        <h5 class="price">{{ x.nomModule }}</h5>
+                      </div>
+                    </div>
+
+                </div>
+                <!-- <h3><a href="course-details.html">{{data.nomFormation}}</a></h3> -->
+                <h3>Formation : {{data.nomFormation}}  </h3>
+                <h3>Instructional hours : {{data.horaire}}</h3>
+                <h4>   {{data.dateDebutFormation | date}}  
+                  <div class=" d-flex justify-content-between align-items-center">
+
+                    <!-- <div class="trainer-profile d-flex align-items-center">
+                      <img src="assets/Site/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                      <span>plus..</span>
+                      
+                    </div> -->
+                      <div class="trainer-rank d-flex align-items-center" >
+                        <i class="bx bx-user"></i>&nbsp;{{data.listeEtudiants.length}} / {{data.nbEtudiant}}
+                      </div>
+                    <div class="trainer-profile d-flex align-items-center">
+                      <!-- <a href="javascript:void(0)" (click)="More(data.idFormation)" ><span>More ..</span></a> -->
+                      <h2>{{data.prix}} DT</h2>
+
+                    </div>
+                    
+                  </div>
+                </h4>
+               
+              </div>
+           
+          </div>
+          </div> <!-- End Course Item-->
+</ng-container>
+  </div>
+</div>
+    </section><!-- End Courses Section -->
+
+  </main><!-- End #main -->
+
+  <app-site-footer></app-site-footer>
